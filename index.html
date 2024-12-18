@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>HMD-Poser: On-Device Real-time Human Motion Tracking from Scalable Sparse Observations</title>
+    <link rel="icon" href="assets/images/VirtualRealityIcon.png">
+    <link rel="stylesheet" href="css/extraAdd.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma-rtl.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.3/dist/css/bulma-carousel.min.css">
+  </head>
+  <body class="bg-light">
+    <section class="section">
+      <div class="container is-widescreen">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-1 publication-title">HMD-Poser: On-Device Real-time Human Motion Tracking from Scalable Sparse Observations</h1>
+            <!-- <div class="is-size-5 publication-authors">
+              <span class="author-block is-disabled">
+                <a href="#">CVPR 2024 Accepted</a>
+              </span> 
+            </div> -->
+
+            <div class="is-size-5 publication-authors block">
+              <span class="author-block">
+                <a href="https://openreview.net/profile?id=~Peng_Dai6" target="_blank" rel="nofollow">Peng Dai</a> ·
+              </span>
+              <span class="author-block">
+                <a href="https://openreview.net/profile?id=~Yang_Zhang46" target="_blank" rel="nofollow">Yang Zhang</a> ·
+              </span>
+              <span class="author-block">
+                <a href="https://openreview.net/profile?id=~Tao_Liu22" target="_blank" rel="nofollow">Tao Liu</a> ·
+              </span>
+              <span class="author-block">
+                <a href="https://openreview.net/profile?id=~ZhenFan1" target="_blank" rel="nofollow">Zhen Fan</a> ·
+              </span>
+              <span class="author-block">
+                <a href="https://openreview.net/profile?id=~Tianyuan_Du1" target="_blank" rel="nofollow">Tianyuan Du</a> ·
+              </span>
+              <span class="author-block">
+                <a href="https://openreview.net/profile?id=~Zhuo_Su3" target="_blank" rel="nofollow">Zhuo Su</a> ·
+              </span>
+              <span class="author-block">
+                <a href="https://openreview.net/profile?id=~Xiaozheng_Zheng1" target="_blank" rel="nofollow">Xiaozheng Zheng</a> ·
+              </span>
+              <span class="author-block">
+                <a href="https://openreview.net/profile?id=~Zeming_Li2" target="_blank" rel="nofollow">Zeming Li</a>
+              </span>
+            </div>
+  
+            <div class="is-size-5 publication-authors block">
+              <span class="company-block"><a href="https://www.picoxr.com/cn" target="_blank">ByteDance Pico Inc.</a></span>
+            </div>
+            <div class="is-size-5 publication-info block">
+              <span class="author-block">CVPR 2024 Accepted</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="columns is-centered">
+          <div class="column has-text-centered is-one-fifth">
+            <div class="field">
+              <div class="control">
+                <div style="padding-left: 37%;"><figure class="image is-64x64"><img src="assets/images/paper.svg" alt="Download Paper"></figure></div>
+                <a class="button is-primary" href="https://arxiv.org/abs/2403.03561" role="button" target="_blank">Paper</a>
+              </div>
+            </div>
+         </div>
+         <div class="column has-text-centered is-one-fifth">
+          <div class="field">
+            <div class="control">
+              <div style="padding-left: 37%;"><figure class="image is-64x64"><img src="assets/images/code.svg" alt="Download Code"></figure></div>
+              <a class="button is-success" href="https://github.com/Pico-AI-Team/HMD-Poser" role="button" target="_blank">Code</a>
+            </div>
+          </div>
+          </div>
+          <div class="column has-text-centered is-one-fifth">
+            <div class="field">
+              <div class="control">
+                <div style="padding-left: 37%;padding-bottom:2px;"><figure class="image is-64x64"><img src="assets/images/dataset.png" alt="Download Dataset"></figure></div>
+                <a class="button is-primary" href="https://drive.google.com/file/d/1xEj3J0vJilx-jPCPbbsX6a6IF9LQ5URu/view?usp=drive_link" role="button" target="_blank">Dataset</a>
+              </div>
+            </div>
+         </div>
+          
+        </div>
+      </div>
+    </section>
+
+    <section class="section" style="padding-top: 0; padding-bottom: 0;">
+      <div class="container">
+        <div class="columns is-centered">
+          <div class="column has-text-centered is-three-fifths">
+            <div class="content is-large"><strong>Overview of Our Framework.</strong></div>
+            <figure class="image"><img src="assets/images/OverOfInputSignals.png" alt="Overview Of FrameWork"></figure>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container is-max-desktop">
+        <!-- Abstract. -->
+        <div class="columns is-centered has-text-centered">
+          <div class="column is-four-fifths">
+            <h2 class="title is-3">Abstract</h2>
+            <div class="content has-text-justified">
+              <p>
+                It is especially challenging to achieve real-time humanmotion tracking on a standalone VR Head-Mounted Display (HMD) such as Meta Quest and PICO. 
+                In this paper, we propose HMD-Poser, the first unified approach torecover full-body motions using scalable sparse observations from HMD and body-worn IMUs. 
+                In particular, it can support a variety of input scenarios, such as HMD,HMD+2IMUs, HMD+3IMUs, etc. 
+                The scalability of inputs may accommodate users’ choices for both high tracking accuracy and easy-to-wear. 
+                A lightweight temporal-spatial feature learning network is proposed in HMD-Poser to guarantee that the model runs in real-time on HMDs. 
+                Furthermore, HMD-Poser presents online bodyshape estimation to improve the position accuracy of bodyjoints. 
+                Extensive experimental results on the challenging AMASS dataset show that HMD-Poser achieves new state-of-the-art results in both accuracy and real-time performance. 
+                We also build a new free-dancing motion datasetto evaluate HMD-Poser’s on-device performance and investigate the performance gap between synthetic data andreal-captured sensor data. 
+                Finally, we demonstrate our HMD-Poser with a real-time Avatar-driving application on a commercial HMD.
+                Our code and dataset are available at <a href="https://pico-ai-team.github.io/hmd-poser" target="_blank">Here</a>.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- <section class="section">
+      <div class="container">
+        <div class="columns is-centered">
+          <div class="column has-text-centered is-four-fifths">
+            <div class="content is-large"><strong>Overview Of Network Architecture.</strong></div>
+            <figure class="image"><img src="assets/images/OverviewOfFrameWork.png" alt="Overview Of Network Architecture"></figure>
+          </div>
+        </div>
+      </div>
+    </section> -->
+
+    <!-- Mesh Of Video -->
+    <section class="section is-light">
+      <div class="container is-widescreen">
+        <div class="columns is-centered has-text-centered">
+          <div class="column is-full">
+            <div class="content is-large">HMD+3IMUs: Compare Of Mesh Visualization</div>
+            <div style="overflow: hidden; border: 1px solid #bbb; border-radius: 10px; height: 82%;">
+              <video controls controlslist="nodownload" muted loop playsinline height="100%">
+                <source src="assets/videos/6IMU_410.mp4" type="video/mp4">
+              </video>
+            </div>
+          </div>
+        </div>
+        <div class="columns is-centered has-text-centered">
+          <div class="column is-full">
+            <div class="content is-large">HMD: Compare Of Mesh Visualization</div>
+            <div style="overflow: hidden; border: 1px solid #bbb; border-radius: 10px; height: 82%;">
+              <video controls controlslist="nodownload" muted loop playsinline height="100%">
+                <source src="assets/videos/3IMU_10.mp4" type="video/mp4">
+              </video>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+		<!-- Mesh Of Video -->
+
+    <!-- 6IMU GoodCase Demo -->
+		<section class="hero is-small is-light">
+			<div class="hero-head has-text-centered">
+        <div class="content is-large "><p>Live Demo: HMD+3IMUs</p></div>
+      </div>
+			<div class="hero-body">
+        <div ckass="container">
+          <div id="carousel-6IMU-Demo" class="hero-carousel results-carousel">
+            <div class="item">
+              <video controls controlslist="nodownload" muted loop playsinline height="100%">
+                <source src="assets/videos/6IMU躺姿动腿再站立.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div class="item">
+              <video controls controlslist="nodownload" muted loop playsinline height="100%">
+                <source src="assets/videos/6IMU太极.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div class="item">
+              <video controls controlslist="nodownload" muted loop playsinline height="100%">
+                <source src="assets/videos/6IMU舞蹈.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div class="item">
+              <video controls controlslist="nodownload" muted loop playsinline height="100%">
+                <source src="assets/videos/6IMU侧压腿.mp4" type="video/mp4">
+              </video>
+            </div>
+          </div>
+        </div>
+      </div>
+		</section>
+		<!-- End 6IMU GoodCase Demo -->
+
+    <!-- 5IMU GoodCase Demo -->
+		<section class="hero is-small is-light">
+			<div class="hero-head has-text-centered">
+        <div class="content is-large "><p>Live Demo: HMD+2IMUs</p></div>
+      </div>
+			<div class="hero-body">
+        <div ckass="container">
+          <div id="carousel-5IMU-Demo" class="hero-carousel results-carousel">
+            <div class="item">
+              <video controls controlslist="nodownload" muted loop playsinline height="100%">
+                <source src="assets/videos/5IMU侧压腿.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div class="item">
+              <video controls controlslist="nodownload" muted loop playsinline height="100%">
+                <source src="assets/videos/5IMU高抬腿维持.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div class="item">
+              <video controls controlslist="nodownload" muted loop playsinline height="100%">
+                <source src="assets/videos/5IMU前后左右踢腿.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div class="item">
+              <video controls controlslist="nodownload" muted loop playsinline height="100%">
+                <source src="assets/videos/5IMU跷二郎腿并快速切换.mp4" type="video/mp4">
+              </video>
+            </div>
+          </div>
+        </div>
+      </div>
+		</section>
+		<!-- End 5IMU GoodCase Demo -->
+
+    <!-- 3IMU GoodCase Demo -->
+		<section class="hero is-small is-light">
+			<div class="hero-head has-text-centered">
+        <div class="content is-large "><p>Live Demo: HMD-Only</p></div>
+      </div>
+			<div class="hero-body">
+        <div ckass="container">
+          <div id="carousel-3IMU-Demo" class="hero-carousel results-carousel">
+            <div class="item">
+              <video controls controlslist="nodownload" muted loop playsinline height="100%">
+                <source src="assets/videos/3IMU手部动作-投篮-挥拍.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div class="item">
+              <video controls controlslist="nodownload" muted loop playsinline height="100%">
+                <source src="assets/videos/3IMU站立下蹲.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div class="item">
+              <video controls controlslist="nodownload" muted loop playsinline height="100%">
+                <source src="assets/videos/3IMU站立坐下.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div class="item">
+              <video controls controlslist="nodownload" muted loop playsinline height="100%">
+                <source src="assets/videos/3IMU走路.mp4" type="video/mp4">
+              </video>
+            </div>
+          </div>
+        </div>
+      </div>
+		</section>
+		<!-- End 3IMU GoodCase Demo -->
+
+    <!-- BadCase Demo -->
+    <section class="section is-light">
+      <div class="container">
+        <div class="columns is-centered has-text-centered">
+          <div class="column is-5">
+            <div class="content is-large">Live Demo: HMD-Only Failure Case</div>
+            <div style="overflow: hidden; border: 1px solid #bbb; border-radius: 10px; height: 82%;">
+              <video controls controlslist="nodownload" muted loop playsinline height="100%">
+                <source src="assets/videos/3IMU-Bad-真人动Avatar不动.mp4" type="video/mp4">
+              </video>
+            </div>
+          </div>
+          <div class="column is-5">
+            <div class="content is-large">Live Demo: HMD+3IMUs Failure Case</div>
+            <div style="overflow: hidden; border: 1px solid #bbb; border-radius: 10px; height: 82%;">
+              <video controls controlslist="nodownload" muted loop playsinline height="100%">
+                <source src="assets/videos/6IMU-Bad-缓慢抬腿.mp4" type="video/mp4">
+              </video>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+		<!-- BadCase Demo -->
+
+     <!-- OurDataSet Demo -->
+		<section class="hero is-small is-light">
+			<div class="hero-head has-text-centered">
+        <div class="content is-large "><p>Visualization Of HMD-Dancing Dataset GT</p></div>
+      </div>
+			<div class="hero-body">
+        <div ckass="container">
+          <div id="carousel-Dataset-Demo" class="hero-carousel results-carousel">
+            <div class="item">
+              <video controls controlslist="nodownload" muted loop playsinline height="100%">
+                <source src="assets/videos/gt_female1_1.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div class="item">
+              <video controls controlslist="nodownload" muted loop playsinline height="100%">
+                <source src="assets/videos/gt_female2_1.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div class="item">
+              <video controls controlslist="nodownload" muted loop playsinline height="100%">
+                <source src="assets/videos/gt_male1_3.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div class="item">
+              <video controls controlslist="nodownload" muted loop playsinline height="100%">
+                <source src="assets/videos/gt_male2_1.mp4" type="video/mp4">
+              </video>
+            </div>
+          </div>
+        </div>
+      </div>
+		</section>
+		<!-- End OurDataSet Demo -->
+
+    <section class="section" id="BibTeX">
+      <div class="container is-max-desktop content">
+        <h2 class="title">BibTeX</h2>
+        <pre><code>
+          @inproceedings{
+            daip2024hmdposer,
+            title={HMD-Poser: On-Device Real-time Human Motion Tracking from Scalable Sparse Observations},
+            author={Dai, Peng and Zhang, Yang and Liu, Tao and Fan, Zhen and Du, Tianyuan and Su, Zhuo and Zheng, Xiaozheng and Li, Zeming},
+            booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},
+            year={2024}
+          }          
+        </code></pre>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="content has-text-centered">
+        </div>
+        <div class="columns is-centered">
+          <div class="column is-8">
+            <div class="content">
+              <p>Copyright © HMD-Poser Authors. All rights reserved.</p>
+              <a href="https://www.flaticon.com/free-icons/vr-glasses" title="vr glasses icons" target="_blank">Vr glasses icons created by Freepik - Flaticon</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.3/dist/js/bulma-carousel.min.js"></script>
+		<script>
+			bulmaCarousel.attach('#carousel-3IMU-Demo', {
+        initialSlide: 0,
+				slidesToScroll: 1,
+				slidesToShow: 3,
+        navigation: true,
+        navigationSwipe: true
+			});
+			bulmaCarousel.attach('#carousel-5IMU-Demo', {
+        initialSlide: 0,
+				slidesToScroll: 1,
+				slidesToShow: 3,
+        navigation: true,
+        navigationSwipe: true
+			});
+			bulmaCarousel.attach('#carousel-6IMU-Demo', {
+        initialSlide: 0,
+				slidesToScroll: 1,
+				slidesToShow: 3,
+        navigation: true,
+        navigationSwipe: true
+			});
+			bulmaCarousel.attach('#carousel-Dataset-Demo', {
+        initialSlide: 0,
+				slidesToScroll: 1,
+				slidesToShow: 3,
+        navigation: true,
+        navigationSwipe: true
+			});
+		</script>
+  </body>
+</html>
