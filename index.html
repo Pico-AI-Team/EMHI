@@ -15,13 +15,13 @@
       <div class="container is-widescreen">
         <div class="columns is-centered">
           <div class="column has-text-centered">
-            <h1 class="title is-1 publication-title">HMD-Poser: On-Device Real-time Human Motion Tracking from Scalable Sparse Observations</h1>
+            <h1 class="title is-1 publication-title">EMHI: A Multimodal Egocentric Human Motion Dataset with HMD and Body-Worn IMUs</h1>
             <!-- <div class="is-size-5 publication-authors">
               <span class="author-block is-disabled">
                 <a href="#">CVPR 2024 Accepted</a>
               </span> 
             </div> -->
-
+            
             <div class="is-size-5 publication-authors block">
               <span class="author-block">
                 <a href="https://openreview.net/profile?id=~Peng_Dai6" target="_blank" rel="nofollow">Peng Dai</a> ·
@@ -41,19 +41,34 @@
               <span class="author-block">
                 <a href="https://openreview.net/profile?id=~Zhuo_Su3" target="_blank" rel="nofollow">Zhuo Su</a> ·
               </span>
-              <span class="author-block">
-                <a href="https://openreview.net/profile?id=~Xiaozheng_Zheng1" target="_blank" rel="nofollow">Xiaozheng Zheng</a> ·
-              </span>
-              <span class="author-block">
-                <a href="https://openreview.net/profile?id=~Zeming_Li2" target="_blank" rel="nofollow">Zeming Li</a>
-              </span>
             </div>
+
+            <!-- <div class="is-size-5 publication-authors block">
+              <span class="author-block">
+                <a href="https://openreview.net/profile?id=~Peng_Dai6" target="_blank" rel="nofollow">Peng Dai</a> ·
+              </span>
+              <span class="author-block">
+                <a href="https://openreview.net/profile?id=~Yang_Zhang46" target="_blank" rel="nofollow">Yang Zhang</a> ·
+              </span>
+              <span class="author-block">
+                <a href="https://openreview.net/profile?id=~Tao_Liu22" target="_blank" rel="nofollow">Tao Liu</a> ·
+              </span>
+              <span class="author-block">
+                <a href="https://openreview.net/profile?id=~ZhenFan1" target="_blank" rel="nofollow">Zhen Fan</a> ·
+              </span>
+              <span class="author-block">
+                <a href="https://openreview.net/profile?id=~Tianyuan_Du1" target="_blank" rel="nofollow">Tianyuan Du</a> ·
+              </span>
+              <span class="author-block">
+                <a href="https://openreview.net/profile?id=~Zhuo_Su3" target="_blank" rel="nofollow">Zhuo Su</a> ·
+              </span>
+            </div> -->
   
             <div class="is-size-5 publication-authors block">
-              <span class="company-block"><a href="https://www.picoxr.com/cn" target="_blank">ByteDance Pico Inc.</a></span>
+              <span class="company-block"><a href="https://www.picoxr.com/cn" target="_blank">Pico</a></span>
             </div>
             <div class="is-size-5 publication-info block">
-              <span class="author-block">CVPR 2024 Accepted</span>
+              <span class="author-block">AAAI 2025 Accepted</span>
             </div>
           </div>
         </div>
@@ -63,7 +78,7 @@
             <div class="field">
               <div class="control">
                 <div style="padding-left: 37%;"><figure class="image is-64x64"><img src="assets/images/paper.svg" alt="Download Paper"></figure></div>
-                <a class="button is-primary" href="https://arxiv.org/abs/2403.03561" role="button" target="_blank">Paper</a>
+                <a class="button is-primary" href="https://arxiv.org/abs/2408.17168" role="button" target="_blank">Paper</a>
               </div>
             </div>
          </div>
@@ -71,7 +86,7 @@
           <div class="field">
             <div class="control">
               <div style="padding-left: 37%;"><figure class="image is-64x64"><img src="assets/images/code.svg" alt="Download Code"></figure></div>
-              <a class="button is-success" href="https://github.com/Pico-AI-Team/HMD-Poser" role="button" target="_blank">Code</a>
+              <a class="button is-success" href="https://github.com/Pico-AI-Team/EMHI" role="button" target="_blank">Code</a>
             </div>
           </div>
           </div>
@@ -93,7 +108,7 @@
         <div class="columns is-centered">
           <div class="column has-text-centered is-three-fifths">
             <div class="content is-large"><strong>Overview of Our Framework.</strong></div>
-            <figure class="image"><img src="assets/images/OverOfInputSignals.png" alt="Overview Of FrameWork"></figure>
+            <figure class="image"><img src="assets/images/overview.pdf" alt="Overview Of FrameWork"></figure>
           </div>
         </div>
       </div>
@@ -107,15 +122,20 @@
             <h2 class="title is-3">Abstract</h2>
             <div class="content has-text-justified">
               <p>
-                It is especially challenging to achieve real-time humanmotion tracking on a standalone VR Head-Mounted Display (HMD) such as Meta Quest and PICO. 
-                In this paper, we propose HMD-Poser, the first unified approach torecover full-body motions using scalable sparse observations from HMD and body-worn IMUs. 
-                In particular, it can support a variety of input scenarios, such as HMD,HMD+2IMUs, HMD+3IMUs, etc. 
-                The scalability of inputs may accommodate users’ choices for both high tracking accuracy and easy-to-wear. 
-                A lightweight temporal-spatial feature learning network is proposed in HMD-Poser to guarantee that the model runs in real-time on HMDs. 
-                Furthermore, HMD-Poser presents online bodyshape estimation to improve the position accuracy of bodyjoints. 
-                Extensive experimental results on the challenging AMASS dataset show that HMD-Poser achieves new state-of-the-art results in both accuracy and real-time performance. 
-                We also build a new free-dancing motion datasetto evaluate HMD-Poser’s on-device performance and investigate the performance gap between synthetic data andreal-captured sensor data. 
-                Finally, we demonstrate our HMD-Poser with a real-time Avatar-driving application on a commercial HMD.
+                Egocentric human pose estimation (HPE) using wearable sensors is essential for VR/AR applications. 
+                Most methods rely solely on either egocentric-view images or sparse Inertial Measurement Unit (IMU) signals, 
+                leading to inaccuracies due to self-occlusion in images or the sparseness and drift of inertial sensors. 
+                Most importantly, the lack of real-world datasets containing both modalities is a major obstacle to progress in this field. 
+                To overcome the barrier, we propose EMHI, a multimodal Egocentric human Motion dataset with Head-Mounted Display (HMD) and body-worn IMUs, 
+                with all data collected under the real VR product suite. 
+                Specifically, EMHI provides synchronized stereo images from downward-sloping cameras on the headset and IMU data from body-worn sensors, 
+                along with pose annotations in SMPL format. This dataset consists of 885 sequences captured by 58 subjects performing 39 actions,
+                totaling about 28.5 hours of recording. We evaluate the annotations by comparing them with optical marker-based SMPL fitting results. 
+                To substantiate the reliability of our dataset, we introduce MEPoser, a new baseline method for multimodal egocentric HPE, 
+                which employs a multimodal fusion encoder, temporal feature encoder, and MLP-based regression heads. 
+                The experiments on EMHI show that MEPoser outperforms existing single-modal methods and demonstrates the value of our dataset in solving the problem of egocentric HPE. 
+                We believe the release of EMHI and the method could advance the research of egocentric HPE and expedite the practical implementation of this technology in VR/AR products.
+                
                 Our code and dataset are available at <a href="https://pico-ai-team.github.io/hmd-poser" target="_blank">Here</a>.
               </p>
             </div>
@@ -140,20 +160,10 @@
       <div class="container is-widescreen">
         <div class="columns is-centered has-text-centered">
           <div class="column is-full">
-            <div class="content is-large">HMD+3IMUs: Compare Of Mesh Visualization</div>
+            <div class="content is-large">Comparation of MEPoser and single-modal methods</div>
             <div style="overflow: hidden; border: 1px solid #bbb; border-radius: 10px; height: 82%;">
               <video controls controlslist="nodownload" muted loop playsinline height="100%">
-                <source src="assets/videos/6IMU_410.mp4" type="video/mp4">
-              </video>
-            </div>
-          </div>
-        </div>
-        <div class="columns is-centered has-text-centered">
-          <div class="column is-full">
-            <div class="content is-large">HMD: Compare Of Mesh Visualization</div>
-            <div style="overflow: hidden; border: 1px solid #bbb; border-radius: 10px; height: 82%;">
-              <video controls controlslist="nodownload" muted loop playsinline height="100%">
-                <source src="assets/videos/3IMU_10.mp4" type="video/mp4">
+                <source src="assets/videos/meposer.mp4" type="video/mp4">
               </video>
             </div>
           </div>
